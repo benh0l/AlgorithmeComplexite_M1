@@ -27,7 +27,6 @@ public class AldousBroder {
                 else
                     graph.addEdge(new Edge(sommet2, sommet));
                 visite[sommet2] = true;
-                //voisin.get(sommet2).used = true;
             }
             sommet = sommet2;
         }
