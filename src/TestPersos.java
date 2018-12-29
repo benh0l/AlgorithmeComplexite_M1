@@ -160,6 +160,29 @@ public class TestPersos {
             total += arbre[ii];
         }
         System.out.println(total);
+
+
+        //QUESTION 7
+        Labyrinthe l = new Labyrinthe("Aldous-Broder",20);
+        Labyrinthe l2 = new Labyrinthe("Kruskal",20);
+
+        //QUESTION8
+            //Partie Aldous-Broder
+        for(int i = 0; i < 1000; i++){
+            l = new Labyrinthe("Aldous-Broder",20);
+            int compteur[] = new int[l.graphe.vertices()];
+            for(Edge e : l.graphe.edges()){
+                compteur[e.from]++;
+                compteur[e.to]++;
+            }
+            int nbCulDeSac = 0;
+            for(int j = 0; j < compteur.length; j++){
+                //Un cul de sac et un sommet relié par une seule arête
+                if(compteur[j] == 1){
+                    nbCulDeSac++;
+                }
+            }
+        }
     }
 
 }

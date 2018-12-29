@@ -14,6 +14,7 @@ public class AldousBroder {
         Random random = new Random();
         boolean visite[] = new boolean[g.vertices()];
         ArrayList<Edge> voisin = new ArrayList<Edge>();
+        Edge e;
 
         int sommet = random.nextInt(g.vertices());
         visite[sommet] = true;
@@ -22,10 +23,15 @@ public class AldousBroder {
             int alea = random.nextInt(voisin.size());
             int sommet2 = voisin.get(alea).other(sommet);
             if(visite[sommet2] == false){
-                if(sommet < sommet2)
-                    graph.addEdge(new Edge(sommet, sommet2));
-                else
-                    graph.addEdge(new Edge(sommet2, sommet));
+                if(sommet < sommet2) {
+                    e = new Edge(sommet, sommet2);
+                    e.used = true;
+                    graph.addEdge(e);
+                }else {
+                    e = new Edge(sommet2, sommet);
+                    e.used = true;
+                    graph.addEdge(e);
+                }
                 visite[sommet2] = true;
             }
             sommet = sommet2;

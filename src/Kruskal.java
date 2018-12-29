@@ -16,8 +16,8 @@ public class Kruskal {
 
         for(int i = 0; i < aretes.size(); i++){
             if(verifierCycle(aretes.get(i), graphe.edges(), g.vertices()) == false){
-                graphe.addEdge(aretes.get(i));
                 aretes.get(i).used = true;
+                graphe.addEdge(aretes.get(i));
             }
         }
 
@@ -38,6 +38,9 @@ public class Kruskal {
             if(sommetRelie[e.to] == false){
                 sommetRelie[e.to] = true;
                 nb++;
+            }
+            if(sommetRelie[e.from] == false && sommetRelie[e.to] == false){
+                aretes.remove(arete);
             }
         }
 
