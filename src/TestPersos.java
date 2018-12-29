@@ -168,6 +168,8 @@ public class TestPersos {
 
         //QUESTION8
             //Partie Aldous-Broder
+        System.out.println("\n\n\nQUESTION 8 : ");
+        int totalCulDeSac = 0;
         for(int i = 0; i < 1000; i++){
             l = new Labyrinthe("Aldous-Broder",20);
             int compteur[] = new int[l.graphe.vertices()];
@@ -182,7 +184,31 @@ public class TestPersos {
                     nbCulDeSac++;
                 }
             }
+            totalCulDeSac += nbCulDeSac;
         }
+        System.out.println("Nombre moyen de cul de sac avec Aldous-Broder : "+ (totalCulDeSac/1000) );
+
+            //Partie Kruskal
+        totalCulDeSac = 0;
+        for(int i = 0; i < 1000; i++){
+            l = new Labyrinthe("Kruskal",20);
+            int compteur[] = new int[l.graphe.vertices()];
+            for(Edge e : l.graphe.edges()){
+                compteur[e.from]++;
+                compteur[e.to]++;
+            }
+            int nbCulDeSac = 0;
+            for(int j = 0; j < compteur.length; j++){
+                //Un cul de sac et un sommet relié par une seule arête
+                if(compteur[j] == 1){
+                    nbCulDeSac++;
+                }
+            }
+            totalCulDeSac += nbCulDeSac;
+        }
+        System.out.println("Nombre moyen de cul de sac avec Kruskal : "+ (totalCulDeSac/1000) );
+
+
     }
 
 }
